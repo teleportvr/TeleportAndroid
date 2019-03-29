@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Teleport</string>
+    <string name="connect">Connect!</string>
+    <string name="headset_id">Headset ID</string>
+    <string name="event_id">Event ID</string>
+    <string name="id_input">Input ID Here</string>
 </resources>
