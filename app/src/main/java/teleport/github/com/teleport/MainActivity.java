@@ -8,6 +8,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 public class MainActivity extends AppCompatActivity {
 
     private int headsetID;
@@ -33,10 +36,16 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the connectButton is clicked
      */
     public void connectToServer(View view){
+
         try {
+
             headsetID = Integer.parseInt(headSetInput.getText().toString());
             eventID = Integer.parseInt(eventInput.getText().toString());
-            showToast("headsetID: " + headsetID + "\neventID: " + eventID);
+            //showToast("headsetID: " + headsetID + "\neventID: " + eventID);
+
+            new sendData(this).execute("URLasdf", headsetID + ", " +  eventID);
+            //showToast("executing task");
+
         }catch(Exception e){
             if (e instanceof NumberFormatException) {
                 showToast("ERROR: ID must be a number");
@@ -47,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * print things on screen for debugging
      */
-    private void showToast(String cheers){
+    public void showToast(String cheers){
         Toast.makeText(MainActivity.this, cheers, Toast.LENGTH_SHORT).show();
     }
 }
