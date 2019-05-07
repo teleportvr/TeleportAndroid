@@ -37,14 +37,14 @@ public class MainActivity extends AppCompatActivity {
      */
     public void connectToServer(View view){
 
+
         try {
 
             headsetID = Integer.parseInt(headSetInput.getText().toString());
             eventID = Integer.parseInt(eventInput.getText().toString());
-            //showToast("headsetID: " + headsetID + "\neventID: " + eventID);
 
-            new sendData(this).execute("URLasdf", headsetID + ", " +  eventID);
-            //showToast("executing task");
+            new sendData(this).execute("http://192.168.43.84:5001/link",  ""+headsetID, "" + eventID);
+
 
         }catch(Exception e){
             if (e instanceof NumberFormatException) {
