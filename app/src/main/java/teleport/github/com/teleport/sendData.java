@@ -19,12 +19,11 @@ public class sendData extends AsyncTask<String, String, String> {
 
     @Override
     protected String doInBackground(String... params) {
-        String urlString = params[0]; // URL to call
-        String headsetID = params[1]; //data to post
-        String eventID = params[2];
+        String urlString = params[0];
+        String headsetID = params[1];
+        String camID = params[2];
 
-        String response;
-        response = poster.post(urlString, headsetID, eventID);
+        String response = poster.post(urlString, headsetID, camID);
 
         //this is passed into the parameter result in onPostExecute
         return response;
@@ -32,7 +31,7 @@ public class sendData extends AsyncTask<String, String, String> {
 
     @Override
     protected void onPostExecute(String result) {
-        //if this task finishes, the inputted URL will show up on the screen
+        //if this task finishes, the response from the server will show up on the screen
         mainActivity.showToast(result);
     }
 }

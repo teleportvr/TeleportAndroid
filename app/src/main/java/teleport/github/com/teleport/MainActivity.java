@@ -14,20 +14,22 @@ import java.net.URL;
 public class MainActivity extends AppCompatActivity {
 
     private int headsetID;
-    private int eventID;
+    private int camID;
 
     EditText headSetInput;
-    EditText eventInput;
+    EditText camInput;
 
     Button connectButton; //🎵Can I get a connection🎵
+
+    private static String URL = "http://192.168.43.84:5001/link";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        headSetInput = (EditText) findViewById(R.id.headsetIDInput);
-        eventInput = (EditText) findViewById(R.id.eventIDInput);
-        connectButton = (Button) findViewById(R.id.connectButton);
+        headSetInput = findViewById(R.id.headsetIDInput);
+        camInput = findViewById(R.id.cameraIDInput);
+        connectButton = findViewById(R.id.connectButton);
     }
 
     /**
@@ -36,15 +38,11 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the connectButton is clicked
      */
     public void connectToServer(View view){
-
-
         try {
-
             headsetID = Integer.parseInt(headSetInput.getText().toString());
-            eventID = Integer.parseInt(eventInput.getText().toString());
+            camID = Integer.parseInt(camInput.getText().toString());
 
-            new sendData(this).execute("http://192.168.43.84:5001/link",  ""+headsetID, "" + eventID);
-
+            new sendData(this).execute(URL,  ""+headsetID, "" + camID);
 
         }catch(Exception e){
             if (e instanceof NumberFormatException) {
