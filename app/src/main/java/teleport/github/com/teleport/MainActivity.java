@@ -2,12 +2,17 @@ package teleport.github.com.teleport;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+
+    private ImageView backgroundDisplay;
 
     private EditText headSetInput;
     private EditText camInput;
@@ -23,6 +28,16 @@ public class MainActivity extends AppCompatActivity {
         headSetInput = findViewById(R.id.headsetIDInput);
         camInput = findViewById(R.id.cameraIDInput);
         connectButton = findViewById(R.id.connectButton);
+        backgroundDisplay = findViewById(R.id.backgroundDisplay);
+
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+
+        /**get height and width of phone screen for debugging purposes**/
+        int height = displayMetrics.heightPixels;
+        int width = displayMetrics.widthPixels;
+        Log.d("screen size", width + "x" + height); //1080x1794
+
     }
 
     /**
